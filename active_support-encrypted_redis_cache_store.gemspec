@@ -3,17 +3,17 @@
 
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'activesupport/encrypted_redis_store/version'
+require 'active_support/cache/encrypted_redis_cache_store'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'activesupport-encrypted_redis_store'
-  spec.version       = Activesupport::EncryptedRedisStore::VERSION
+  spec.name          = 'active_support-encrypted_redis_cache_store'
+  spec.version       = ActiveSupport::Cache::EncryptedRedisCacheStore::VERSION
   spec.authors       = ['alpaca-tc']
   spec.email         = ['alpaca-tc@alpaca.tc']
 
   spec.summary       = 'Write a short summary, because RubyGems requires one.'
   spec.description   = 'Write a longer description or delete this line.'
-  spec.homepage      = 'https://github.com/alpaca-tc/activesupport-encrypted_redis_store'
+  spec.homepage      = 'https://github.com/alpaca-tc/active_support-encrypted_redis_cache_store'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
@@ -22,6 +22,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency 'activesupport', '>= 5.2.0.rc2'
+  spec.add_dependency 'redis', '>= 4.0.1'
 
   spec.add_development_dependency 'bundler', '~> 1.16'
   spec.add_development_dependency 'guard-rspec'

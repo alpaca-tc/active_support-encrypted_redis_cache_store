@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 require 'bundler/setup'
-require 'activesupport/encrypted_redis_store'
+require 'fakeredis/rspec'
+require 'pry'
+require 'active_support/cache/encrypted_redis_cache_store'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
