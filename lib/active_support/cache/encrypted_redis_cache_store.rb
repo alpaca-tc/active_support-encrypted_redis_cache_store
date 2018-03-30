@@ -24,9 +24,21 @@ module ActiveSupport
 
       private
 
+      def failsafe_decryption(method, returning: nil)
+        yield
+      rescue ActiveSupport::MessageEncryptor::InvalidMessage => exception
+        handle_exception(exception: exception, method: method, returning: returning)
+        returning
+      end
+
       def deserialize_entry(serialized_entry)
         return unless serialized_entry
-        super(encryptor.decrypt_and_verify(serialized_entry))
+
+        decrypted = failsafe_decryption(:deserialize_entry) do
+          encryptor.decrypt_and_verify(serialized_entry)
+        end
+
+        super(decrypted) if decrypted
       end
 
       def serialize_entry(*)

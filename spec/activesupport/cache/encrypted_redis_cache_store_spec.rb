@@ -52,6 +52,13 @@ RSpec.describe ActiveSupport::Cache::EncryptedRedisCacheStore do
         instance.write(key, value)
         expect(instance.read(key)).to eq(value)
       end
+
+      context 'when stored invalid message' do
+        it 'ignores exception' do
+          instance.redis.set(key, 'invalid message')
+          expect(instance.read(key)).to be_nil
+        end
+      end
     end
   end
 end
