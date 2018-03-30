@@ -1,4 +1,3 @@
-
 # frozen_string_literal: true
 
 lib = File.expand_path('lib', __dir__)
@@ -11,8 +10,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['alpaca-tc']
   spec.email         = ['alpaca-tc@alpaca.tc']
 
-  spec.summary       = 'Write a short summary, because RubyGems requires one.'
-  spec.description   = 'Write a longer description or delete this line.'
+  spec.summary       = 'active_support-encrypted_redis_store provides a encrypted cache for ActiveSupport.'
+  spec.description   = 'active_support-encrypted_redis_store provides a encrypted cache for ActiveSupport. It protects your critical data by enabling runtime encryption in the redis_cache'
   spec.homepage      = 'https://github.com/alpaca-tc/active_support-encrypted_redis_cache_store'
   spec.license       = 'MIT'
 

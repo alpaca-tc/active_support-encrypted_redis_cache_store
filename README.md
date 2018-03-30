@@ -1,28 +1,27 @@
-# Activesupport::EncryptedRedisStore
+# Activesupport::Cache::EncryptedRedisStore
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/active_support/encrypted_redis_store`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+active_support-encrypted_redis_store provides a encrypted cache for ActiveSupport.
+It protects your critical data by enabling runtime encryption in the redis_cache.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'activesupport-encrypted_redis_store'
+gem 'active_support-encrypted_redis_cache_store'
 ```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install activesupport-encrypted_redis_store
 
 ## Usage
 
-TODO: Write usage instructions here
+Configure cache_store in your rails application.
+
+```ruby
+# config/application.rb
+config.cache_store = :encrypted_redis_cache_store, {
+  url: 'redis://localhost:6379',
+  encryptor_key: ENV['ENCRYPTOR_KEY'] # Generated key `ActiveSupport::EncryptedFile.generate_key`
+}
+```
 
 ## Development
 
@@ -32,7 +31,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/activesupport-encrypted_redis_store.
+Bug reports and pull requests are welcome on GitHub at https://github.com/alpaca-tc/active_support-encrypted_redis_store.
 
 ## License
 
